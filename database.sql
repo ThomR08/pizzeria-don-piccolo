@@ -35,8 +35,7 @@ CREATE TABLE IF NOT EXISTS pizza (
     nombre VARCHAR(45) NOT NULL,
     tamano ENUM('Pequeña', 'Mediana', 'Grande', 'Familiar') NOT NULL,
     tipo ENUM('Clasica', 'Especial', 'Vegetariana') NOT NULL,
-    precio_con_iva DOUBLE NOT NULL,
-    iva DOUBLE NOT NULL,
+    precio DOUBLE NOT NULL,
     PRIMARY KEY (id)
 );
 
