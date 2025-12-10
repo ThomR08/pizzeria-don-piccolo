@@ -159,6 +159,11 @@ CREATE TABLE IF NOT EXISTS historial_precios (
 -- EXAMEN !!!!!!!!!!!!
 -- -----------------------------------------------------
 
+-- Los puntos 1 y 2 del examen no son necesarios añadirlos ya que la base de datos ya tiene todos los atributos que se piden en los requerimientos,
+-- en la parte superior se muestra la creación de toda la base de datos sql
+
+-- Acontunuación se hacen las consultas requeridas:
+
 -- 3. Consulta de pedidos por cliente
 -- Consulta SQL que muestre el nombre del cliente, el ID del pedido, el total y el estado del pedido.
 SELECT
