@@ -101,3 +101,52 @@ FROM (
 JOIN cliente c ON c.id = sub.cliente_fk
 JOIN persona per ON per.id = c.id
 ORDER BY sub.mes_anyo DESC, per.nombre;
+
+-- -----------------------------------------------------
+-- EXAMEN !!!!!!!!!!!!
+-- -----------------------------------------------------
+
+-- 3. Consulta de pedidos por cliente
+-- Consulta SQL que muestre el nombre del cliente, el ID del pedido, el total y el estado del pedido.
+SELECT
+    p.nombre AS nombre_cliente,
+    pd.id AS id_pedido,
+    pd.total,
+    pd.estado
+FROM pedido pd
+LEFT JOIN persona p ON p.id = pd.cliente_fk;
+
+-- 4. Consulta de pedidos entregados en un rango de fechas
+-- Mostrar los pedidos con estado entregado cuya fecha esté entre dos fechas dadas (usa BETWEEN).
+SELECT
+    p.id AS id_pedido,
+    p.fecha_hora,
+    p.pedido_para,
+    p.metodo_pago,
+    p.total
+FROM (
+    SELECT * FROM pedido WHERE pedido.estado = 'Entregado'
+) AS p
+WHERE DATE(p.fecha_hora) BETWEEN '2025-01-10' AND '2025-01-15'
+ORDER BY p.fecha_hora;
+
+-- 5. Consulta de resumen de pedidos por método de pago
+-- Mostrar cuántos pedidos se hicieron por cada método de pago y el total acumulado (GROUP BY).
+SELECT
+    p.metodo_pago,
+    COUNT(*) AS num_pedidos,
+    SUM(p.total) AS ingreso_total
+FROM pedido p
+GROUP BY p.metodo_pago;
+
+-- 6. Consulta de clientes frecuentes
+-- Mostrar los clientes que tengan más de 5 pedidos en total (usa HAVING COUNT(*) > 5).
+SELECT
+    per.nombre AS cliente,
+    p.cliente_fk AS id_cliente,
+    COUNT(*) AS num_pedidos,
+    SUM(p.total) AS total_gastado
+FROM pedido p
+LEFT JOIN persona per ON per.id = p.cliente_fk
+GROUP BY p.cliente_fk
+HAVING COUNT(*) > 5;
