@@ -48,6 +48,8 @@ CREATE TABLE IF NOT EXISTS ingrediente (
     cantidad_por_porcion INT NOT NULL,
     unidad_de_medida ENUM('Unidad', 'Gramo', 'Mililitro') NOT NULL,
     costo_por_porcion DOUBLE NOT NULL,
+    stock_actual DOUBLE NOT NULL DEFAULT 0,
+    stock_minimo DOUBLE NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
 
@@ -61,9 +63,9 @@ CREATE TABLE IF NOT EXISTS pedido (
     metodo_pago ENUM('Efectivo', 'Datafono', 'Transferencia por banco virtual') NOT NULL,
     estado ENUM('Por preparar', 'En preparacion', 'Por entragar', 'En camino', 'Entregado') NOT NULL,
     pedido_para ENUM('Mesa', 'Llevar', 'Recoger') NOT NULL,
-    sub_total DOUBLE NOT NULL,
-    iva DOUBLE NOT NULL,
-    total DOUBLE NOT NULL,
+    sub_total DOUBLE,
+    iva DOUBLE,
+    total DOUBLE,
     PRIMARY KEY (id),
     FOREIGN KEY (cliente_fk) REFERENCES cliente (id)
 );
@@ -75,7 +77,7 @@ CREATE TABLE IF NOT EXISTS zona (
     id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(45) NOT NULL,
     precio_domi DOUBLE NOT NULL,
-    distancia_km INT NOT NULL,
+    distancia_km DOUBLE,
     PRIMARY KEY (id)
 );
 
@@ -130,4 +132,16 @@ CREATE TABLE IF NOT EXISTS detalle_pedido (
     PRIMARY KEY (id),
     FOREIGN KEY (pedido_fk) REFERENCES pedido (id),
     FOREIGN KEY (pizza_fk) REFERENCES pizza (id)
+);
+
+-- -----------------------------------------------------
+-- Tabla historial_precios
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS historial_precios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pizza_fk INT NOT NULL,
+    precio_anterior DOUBLE NOT NULL,
+    precio_nuevo DOUBLE NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (pizza_fk) REFERENCES pizza(id)
 );

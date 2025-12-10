@@ -45,27 +45,27 @@ INSERT INTO pizza (nombre, tamano, tipo, precio) VALUES
 -- -----------------------------------------------------
 -- INSERTS INGREDIENTE
 -- -----------------------------------------------------
-INSERT INTO ingrediente (nombre, cantidad_por_porcion, unidad_de_medida, costo_por_porcion) VALUES
-('Queso Mozzarella', 100, 'Gramo', 1500),
-('Pepperoni', 50, 'Gramo', 1700),
-('Jamón', 60, 'Gramo', 1400),
-('Piña', 50, 'Gramo', 900),
-('Salsa de Tomate', 30, 'Mililitro', 500),
-('Champiñones', 40, 'Gramo', 1200),
-('Carne Molida', 70, 'Gramo', 2000),
-('Pollo Desmechado', 70, 'Gramo', 2100),
-('Cebolla', 40, 'Gramo', 600),
-('Pimentón', 40, 'Gramo', 700),
-('Queso Azul', 30, 'Gramo', 1800),
-('Maíz Dulce', 50, 'Gramo', 800),
-('Tocineta', 50, 'Gramo', 1900),
-('Jalapeños', 25, 'Gramo', 1000),
-('Orégano', 5, 'Gramo', 200),
-('Aceitunas', 30, 'Gramo', 1100),
-('Tomate', 50, 'Gramo', 900),
-('Albahaca', 5, 'Gramo', 300),
-('Queso Parmesano', 20, 'Gramo', 1600),
-('Ajo', 5, 'Gramo', 300);
+INSERT INTO ingrediente (nombre, cantidad_por_porcion, unidad_de_medida, costo_por_porcion, stock_actual, stock_minimo) VALUES
+('Queso Mozzarella', 100, 'Gramo', 1500, 10000, 2000),
+('Pepperoni', 50, 'Gramo', 1700, 5000, 1000),
+('Jamón', 60, 'Gramo', 1400, 5000, 1000),
+('Piña', 50, 'Gramo', 900, 4000, 800),
+('Salsa de Tomate', 30, 'Mililitro', 500, 8000, 1500),
+('Champiñones', 40, 'Gramo', 1200, 3000, 700),
+('Carne Molida', 70, 'Gramo', 2000, 6000, 1500),
+('Pollo Desmechado', 70, 'Gramo', 2100, 6000, 1500),
+('Cebolla', 40, 'Gramo', 600, 2500, 500),
+('Pimentón', 40, 'Gramo', 700, 2500, 500),
+('Queso Azul', 30, 'Gramo', 1800, 2000, 400),
+('Maíz Dulce', 50, 'Gramo', 800, 3000, 600),
+('Tocineta', 50, 'Gramo', 1900, 3500, 800),
+('Jalapeños', 25, 'Gramo', 1000, 1500, 300),
+('Orégano', 5, 'Gramo', 200, 400, 80),
+('Aceitunas', 30, 'Gramo', 1100, 2000, 400),
+('Tomate', 50, 'Gramo', 900, 3000, 600),
+('Albahaca', 5, 'Gramo', 300, 300, 60),
+('Queso Parmesano', 20, 'Gramo', 1600, 1200, 300),
+('Ajo', 5, 'Gramo', 300, 500, 100);
 
 -- -----------------------------------------------------
 -- INSERTS ZONA
